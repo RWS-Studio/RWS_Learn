@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>rw_learn</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>New grade</h1>
+
+    {% if grade == "" %}
+    <form action="" method="get">
+        <!--returns /grade/new?[input_name]=[input_value]-->
+        <input type="hidden" name="form" value="true"><!--this input is hidden for the user, it permits to the server to
+         know if the request was sent-->
+        <input type="text" name="value" id="grade-value" placeholder="Grade" required>
+        <input type="text" name="factor" id="grade-factor" placeholder="Factor" required>
+        <input type="text" name="subject" id="grade-subject" placeholder="Subject" required>
+        <input type="text" name="description" id="grade-description" placeholder="Description" required>
+        <button type="submit">Create</button>
+    </form>
+    {% else %}
+    <p>{{ grade.value }}</p>
+    <p>{{ grade.factor }}</p>
+    <p>{{ grade.subject }}</p>
+    <p>{{ grade.description }}</p>
+    {% endif %}
+</body>
+</html>
