@@ -8,6 +8,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    # shows list of all grades + links to view them
+    # in next version : graphs
     return render_template('index.html')
 
 
@@ -37,6 +39,25 @@ def new_grade():
         return render_template('add_grade.html', grade=new_grade)
     else:  # if form != submitted show template
         return render_template('add_grade.html', grade="")
+
+
+@app.route('/grade/update')
+def update_grade():
+    # required : id of the grade in the url -> /grade/update?id=[id]
+    pass
+
+
+@app.route('/grade/delete')
+def delete_grade():
+    # required : id of the grade in the url -> /grade/delete?id=[id]
+    # template : asks user before deleting the grade
+    pass
+
+
+@app.route('/grade/view')
+def view_grade():
+    # required : id of the grade in the url -> /grade/view?id=[id]
+    pass
 
 
 if __name__ == "__main__":
