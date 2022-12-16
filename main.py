@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, url_for, request, redirect
 
 from models import Grade
@@ -27,8 +28,12 @@ def new_grade():
         description = request.args["description"]
 
         new_grade = Grade(value=value, factor=factor, subject=subject, description=description)
+
+
+        # here code for add the grade in the db
+
+
         return render_template('add_grade.html', grade=new_grade)
-        # return redirect('/')
     else:  # if form != submitted show template
         return render_template('add_grade.html', grade="")
 
