@@ -1,13 +1,9 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>rw_learn</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}
+New grade
+{% endblock %}
+
+{% block content %}
     <h1>New grade</h1>
 
     <form action="" method="get">
@@ -26,5 +22,4 @@
     <p>{{ grade.subject }}</p>
     <p>{{ grade.description }}</p>
     <p>{{ grade.factor }}</p>
-</body>
-</html>
+{% endblock %}
