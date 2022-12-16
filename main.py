@@ -23,11 +23,12 @@ def new_grade():
     # if form == submitted, create grade with args in url and then redirect on the home
     if form:
         value = request.args["value"]
+        value_max = request.args["value-max"]
         factor = request.args["factor"]
         subject = request.args["subject"]
         description = request.args["description"]
 
-        new_grade = Grade(value=value, factor=factor, subject=subject, description=description)
+        new_grade = Grade(value=value, value_max=value_max, factor=factor, subject=subject, description=description)
 
 
         # here code for add the grade in the db
