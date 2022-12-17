@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+New subject
+{% endblock %}
+
+{% block content %}
+    <h1>New Subject</h1>
+
+    <form action="" method="get">
+        <input type="hidden" name="form" value="true">
+        <input type="text" name="Subject" id="grade-subject" placeholder="Subject" required>
+      <button type="submit">Create</button>
+    </form>
+    <p>{{ grade.subject }}</p>
+{% endblock %}
