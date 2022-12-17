@@ -7,9 +7,9 @@ New subject
     <h1>New Subject</h1>
 
     <form action="" method="get">
-        <input type="hidden" name="form" value="true">
+        <input type="hidden" name="form" value="true" required>
         <input type="text" name="subject" id="subject" placeholder="Subject" required>
       <button type="submit">Create</button>
     </form>
-    <p>{{ subject }}</p>
+    <p>{{ subject.name }}</p>
 {% endblock %}

@@ -1,5 +1,5 @@
 from database.grades_manager import GradesManager
-from models import Grade
+from models import Grade, Subject
 
 from flask import Flask, render_template, url_for, request, redirect
 
@@ -24,8 +24,9 @@ def new_subject():
         form = False
 
     if form:
-        subject = request.args["subject"]
-        return render_template("add_subject.html", subject=subject)
+        subject_name = request.args["subject"]
+        new_subject = Subject(subject_name)
+        return render_template("add_subject.html", subject=new_subject)
 
     return render_template("add_subject.html", subject="")
 

@@ -7,3 +7,8 @@ class Grade:
         self.description = description
         self.factor = factor
 
+
+class Subject:
+    def __init__(self, name):
+        self.name = name
+
