@@ -1,7 +1,7 @@
 from database.grades_manager import GradesManager
-from flask import Flask, render_template, url_for, request, redirect
-
 from models import Grade
+
+from flask import Flask, render_template, url_for, request, redirect
 
 app = Flask(__name__)
 GradesManager = GradesManager()
@@ -14,7 +14,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/')
+@app.route('/subject/new')
 def new_subject():
 
     # get if the form is submitted or not
@@ -25,6 +25,9 @@ def new_subject():
 
     if form:
         subject = request.args["subject"]
+        return render_template("add_subject.html", subject=subject)
+
+    return render_template("add_subject.html", subject="")
 
 
 @app.route('/grade/new')
@@ -46,7 +49,7 @@ def new_grade():
 
         new_grade = Grade(value=value, value_max=value_max, factor=factor, subject=subject, description=description)
 
-        # value max is not obligatory
+        # value max is not required
         GradesManager.add_grade(subject, float(value), int(factor), description, int(value_max))
 
         return render_template('add_grade.html', grade=new_grade)
