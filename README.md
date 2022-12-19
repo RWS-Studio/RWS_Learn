@@ -1,4 +1,4 @@
-# rws_learn software
+# RWS_learn software
 
 ## This software is already in development.
 
