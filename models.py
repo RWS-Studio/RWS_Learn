@@ -12,3 +12,12 @@ class Subject:
     def __init__(self, name):
         self.name = name
 
+
+class SoftwareVersion:
+    def __init__(self, number):
+        """
+        for more information about number, https://semver.org/
+        :param number:
+        """
+        self.number = number
+
