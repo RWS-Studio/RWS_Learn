@@ -21,3 +21,14 @@ class SoftwareVersion:
         """
         self.number = number
 
+    def show_update_available(self, update_number):
+        # include static/js/msg/update_available.js in the html
+        pass
+
+    def get_if_new_version(self):
+        with open("database/actual_version.txt", "r") as file:
+            actual = file.read()
+        with open("https://rws-studio.github.io/rws_learn/last_version.txt", "r") as file:
+            last = file.read()
+        if not actual == last:
+            self.show_update_available(last)
