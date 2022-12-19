@@ -26,6 +26,7 @@ def new_subject():
     if form:
         subject_name = request.args["subject"]
         new_subject = Subject(subject_name)
+        GradesManager.add_subject(subject_name)
         return render_template("add_subject.html", subject=new_subject)
 
     return render_template("add_subject.html", subject="")
