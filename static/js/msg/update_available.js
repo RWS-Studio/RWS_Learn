@@ -1,0 +1,1 @@
+console.log("A new version of the software is available.");  // to do : make an sort of notification that says the same msg.

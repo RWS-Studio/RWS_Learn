@@ -32,6 +32,25 @@ def new_subject():
     return render_template("add_subject.html", subject="")
 
 
+@app.route('/subject/update')
+def update_subject():
+    # required : id of the grade in the url -> /subject/update?id=[id]
+    pass
+
+
+@app.route('/subject/delete')
+def delete_subject():
+    # required : id of the grade in the url -> /subject/delete?id=[id]
+    # template : asks user before deleting the subject
+    pass
+
+
+@app.route('/subject/view')
+def view_subject():
+    # required : id of the grade in the url -> /subject/view?id=[id]
+    pass
+
+
 @app.route('/grade/new')
 def new_grade():
 
