@@ -14,20 +14,6 @@ class GradesManager:
             value_20 = (value/value_max) * 20
         return value_max, value_20
 
-    def add_subject(self, subject: str):
-        cursor = self.con.cursor()
-
-        query = f"CREATE TABLE '{subject}' ('grade' FLOAT not null, " \
-                f"                          'grade_max' INT not null, " \
-                f"                          'grade_20' INT not null," \
-                f"                          'factor' FLOAT not null," \
-                f"                          'description' TEXT not null," \
-                f"                          'id' INTEGER not null primary key autoincrement);"
-
-        cursor.execute(query)
-        cursor.close()
-        self.con.commit()
-
     def add_grade(self, subject: str, value: float, factor: float, description: str, value_max: int = None):
         v_max_20 = self.checking_value_max(value, value_max)
         cursor = self.con.cursor()
@@ -36,17 +22,27 @@ class GradesManager:
         cursor.close()
         self.con.commit()
 
-    def update_grade(self, subject: str, value: float, factor: float, description: str, grade_id: int, value_max: int = None):
+    def update_grade(self, subject: str, value: float, factor: float, description: str, grade_id: int,
+                     value_max: int = None):
         v_max_20 = self.checking_value_max(value, value_max)
         cursor = self.con.cursor()
-        query = f"UPDATE {subject} SET grade = ?, grade_max = ?, grade_20 = ?, factor = ?, description = ? WHERE id = ?"
+        query = f"UPDATE {subject} SET grade = ?, grade_max = ?, grade_20 = ?, factor = ?, description = ? " \
+                f"                                                                                      WHERE id = ?;"
         cursor.execute(query, (value, v_max_20[0], v_max_20[1], factor, description, grade_id))
         cursor.close()
         self.con.commit()
 
     def del_grade(self, subject: str, grade_id: int):
         cursor = self.con.cursor()
-        query = f"DELETE FROM {subject} WHERE id = ?"
+        query = f"DELETE FROM {subject} WHERE id = ?;"
         cursor.execute(query, (grade_id,))
         cursor.close()
         self.con.commit()
+
+    def view_grade(self, subject, grade_id):
+        cursor = self.con.cursor()
+        query = f"SELECT grade, grade_max, grade_20, factor, description from {subject} WHERE id = ?;"
+        cursor.execute(query, (grade_id,))
+        result = cursor.fetchall()
+        cursor.close()
+        return dict(result[0])
