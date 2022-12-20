@@ -3,7 +3,7 @@ import sqlite3
 
 class SubjectsManager:
     def __init__(self):
-        self.con = sqlite3.connect(f"./db_marks.db")
+        self.con = sqlite3.connect(f"./database/db_grades.db")
         self.con.row_factory = sqlite3.Row
 
     def add_subject(self, subject: str):
@@ -17,6 +17,7 @@ class SubjectsManager:
         cursor.execute(query)
         cursor.close()
         self.con.commit()
+        print("Commit")
 
     def del_subject(self, subject):
         cursor = self.con.cursor()

@@ -6,10 +6,6 @@ from flask import Flask, render_template, url_for, request, redirect
 
 app = Flask(__name__)
 
-GradesManager = GradesManager()
-SubjectsManager = SubjectsManager()
-
-
 @app.route('/')
 def index():
     # shows list of all grades + links to view them
@@ -29,7 +25,8 @@ def new_subject():
     if form:
         subject_name = request.args["subject"]
         new_subject = Subject(subject_name)
-        SubjectsManager.add_subject(subject_name)
+        SubjectsManager().add_subject(subject_name)
+        print("Send")
         return render_template("add_subject.html", subject=new_subject)
 
     return render_template("add_subject.html", subject="")
@@ -74,7 +71,7 @@ def new_grade():
         new_grade = Grade(value=value, value_max=value_max, factor=factor, subject=subject, description=description)
 
         # value max is not required
-        GradesManager.add_grade(subject, float(value), int(factor), description, int(value_max))
+        GradesManager().add_grade(subject, float(value), float(factor), description, int(value_max))
 
         return render_template('add_grade.html', grade=new_grade)
     else:  # if form != submitted show template
