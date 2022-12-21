@@ -27,9 +27,9 @@ def new_subject():
         new_subject = Subject(subject_name)
         SubjectsManager().add_subject(subject_name)
         print("Send")
-        return render_template("subjects/add_subject.html", subject=new_subject)
+        return redirect('/')
 
-    return render_template("subjects/add_subject.html", subject="")
+    return render_template("subjects/add_subject.html")
 
 
 @app.route('/subject/update')
@@ -103,9 +103,9 @@ def new_grade():
         # value max is not required
         GradesManager().add_grade(subject, float(value), float(factor), description, int(value_max))
 
-        return render_template('grades/add_grade.html', grade=new_grade)
+        return redirect('/')
     else:  # if form != submitted show template
-        return render_template('grades/add_grade.html', grade="")
+        return render_template('grades/add_grade.html')
 
 
 @app.route('/grade/update')
