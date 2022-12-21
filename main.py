@@ -1,5 +1,3 @@
-import time
-
 from database.grades_manager import GradesManager
 from database.subjects_manager import SubjectsManager
 from models import Grade, Subject
@@ -13,7 +11,23 @@ app = Flask(__name__)
 def index():
     # shows list of all grades + links to view them
     # in next version : graphs
-    return render_template('index.html')
+    all_subjects = SubjectsManager().view_subject()
+    subjects_and_grades = {}
+    for i in all_subjects:
+        if list(i)[0] != "sqlite_sequence":
+            subjects_and_grades[list(i)[0]] = []
+    for subject in subjects_and_grades:
+        counter = 1
+        loop = True
+        while loop:
+            try:
+                _grade = GradesManager().view_grade(subject, counter)
+                _grade["id"] = counter
+                subjects_and_grades[subject].append(_grade)
+            except IndexError:
+                loop = False
+            counter += 1
+    return render_template('index.html', subjects=subjects_and_grades)
 
 
 @app.route('/subject/new')
@@ -56,7 +70,6 @@ def update_subject():
     for i in all_subjects:
         if list(i)[0] == subject:
             subject_from_db = list(i)[0]
-
     return render_template('subjects/update_subject.html', subject=subject_from_db)
 
 

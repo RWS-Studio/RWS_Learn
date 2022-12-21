@@ -4,6 +4,18 @@ Home
 {% endblock %}
 
 {% block content %}
-<a href="/grade/new">New grade</a>
-<a href="/subject/new">New subject</a>
+{% for subject in subjects %}
+    {{ subject }}
+    {% for grade in subjects[subject] %}
+        <div class="grade">
+            <a href="/grade/view?id={{ grade.id }}&subject={{ subject }}">
+                {{ grade.grade }}
+                {{ grade.grade_max }}
+                {{ grade_20 }}
+                {{ grade.factor }}
+                {{ grade.description }}
+            </a>
+        </div>
+    {% endfor %}
+{% endfor %}
 {% endblock %}
