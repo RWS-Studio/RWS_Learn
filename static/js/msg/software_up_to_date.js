@@ -1,1 +1,0 @@
-console.log("The software is up-to-date.");  // to do : make an sort of notification that says the same msg.
