@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+Delete grade
+{% endblock %}
+
+{% block content %}
+    <form action="" method="get">
+        <input type="hidden" name="form" value="true">
+        <input type="hidden" name="id" id="js-input-id" required>
+        <input type="hidden" name="subject" id="js-input-subject" required>
+        <input type="checkbox" name="confirm" id="confirm" required>
+        <label for="confirm">Are you sure to delete this grade ? There is no turning back.</label>
+        <button type="submit">Delete</button>
+    </form>
+
+    <script>
+        let id_input = document.querySelector("#js-input-id");
+        let subject_input = document.querySelector("#js-input-subject");
+
+        let params = new URLSearchParams(window.location.search);
+
+        let grade_id = params.get('id');
+        let subject = params.get('subject');
+
+        id_input.setAttribute("value", grade_id);
+        subject_input.setAttribute("value", subject);
+
+    </script>
+{% endblock %}

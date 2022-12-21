@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+Delete subject
+{% endblock %}
+
+{% block content %}
+    <form action="" method="get">
+        <input type="hidden" name="form" value="true">
+        <input type="hidden" name="subject" id="js-input-subject" required>
+        <input type="checkbox" name="confirm" id="confirm" required>
+        <label for="confirm">Are you sure to delete this subject ? There is no turning back.</label>
+        <button type="submit">Delete</button>
+    </form>
+
+    <script>
+        let subject_input = document.querySelector("#js-input-subject");
+
+        let params = new URLSearchParams(window.location.search);
+
+        let subject = params.get('subject');
+
+        subject_input.setAttribute("value", subject);
+    </script>
+{% endblock %}

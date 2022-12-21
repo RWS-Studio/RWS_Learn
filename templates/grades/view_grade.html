@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+View grade
+{% endblock %}
+
+{% block content %}
+    <p>{{ subject }}</p>
+    <p>{{ grade["grade"] }}</p>
+    <p>{{ grade["grade_max"] }}</p>
+    <p>{{ grade["grade_20"] }} / 20</p>
+    <p>{{ grade["description"] }}</p>
+    <p>{{ grade["factor"] }}</p>
+
+    <a id="js-link-update">Update</a>
+    <a id="js-link-delete">Delete</a>
+
+    <script>
+        let a_update = document.querySelector("#js-link-update");
+        let a_delete = document.querySelector("#js-link-delete");
+
+        let url = window.location.href.split('?');
+
+        a_update.setAttribute("href", url[0].split('view')[0] + "update?" + url[1]);
+        a_delete.setAttribute("href", url[0].split('view')[0] + "delete?" + url[1]);
+    </script>
+{% endblock %}
