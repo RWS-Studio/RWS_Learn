@@ -11,13 +11,13 @@ New grade
         <input type="text" name="value" id="grade-value" placeholder="Grade" required>
         <input type="text" name="value-max" id="grade-value-max" placeholder="On" value="20" required>
         <input type="text" name="factor" id="grade-factor" placeholder="Factor">
-        <input type="text" name="subject" id="grade-subject" placeholder="Subject" required>
+        <!--<input type="text" name="subject" id="grade-subject" placeholder="Subject" required>-->
+        <select name="subject" id="grade-subject">
+            {% for subject in subjects %}
+            <option value="{{ subject }}">{{ subject }}</option>
+            {% endfor %}
+        </select>
         <input type="text" name="description" id="grade-description" placeholder="Description" required>
         <button type="submit">Create</button>
     </form>
-    <p>{{ grade.value }}</p>
-    <p>{{ grade.value_max }}</p>
-    <p>{{ grade.subject }}</p>
-    <p>{{ grade.description }}</p>
-    <p>{{ grade.factor }}</p>
 {% endblock %}

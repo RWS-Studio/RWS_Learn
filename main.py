@@ -1,3 +1,5 @@
+import time
+
 from database.grades_manager import GradesManager
 from database.subjects_manager import SubjectsManager
 from models import Grade, Subject
@@ -5,6 +7,7 @@ from models import Grade, Subject
 from flask import Flask, render_template, url_for, request, redirect
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def index():
@@ -99,6 +102,13 @@ def new_grade():
     except Exception:
         form = False
 
+    # for <select> in the template
+    all_subjects = SubjectsManager().view_subject()
+    subjects = []
+    for i in all_subjects:
+        if list(i)[0] != "sqlite_sequence":
+            subjects.append(list(i)[0])
+
     # if form == submitted, create grade with args in url and then redirect on the home
     if form:
         value = request.args["value"]
@@ -114,7 +124,7 @@ def new_grade():
 
         return redirect('/')
     else:  # if form != submitted show template
-        return render_template('grades/add_grade.html')
+        return render_template('grades/add_grade.html', subjects=subjects)
 
 
 @app.route('/grade/update')
