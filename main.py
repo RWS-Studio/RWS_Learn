@@ -48,9 +48,13 @@ def update_subject():
         SubjectsManager().update_subject(old_name=subject, new_name=new_name)
         return redirect('/')
 
-    subject = SubjectsManager().view_subject()
+    all_subjects = SubjectsManager().view_subject()
+    subject_from_db = ""
+    for i in all_subjects:
+        if list(i)[0] == subject:
+            subject_from_db = list(i)[0]
 
-    return render_template('subjects/update_subject.html', subject=subject)
+    return render_template('subjects/update_subject.html', subject=subject_from_db)
 
 
 @app.route('/subject/delete')
@@ -77,7 +81,12 @@ def delete_subject():
 def view_subject():
     # required : name of the subject in the url -> /subject/view?subject=[subject]
     subject_param = request.args['subject']
-    subject = SubjectsManager().view_subject()
+    all_subjects = SubjectsManager().view_subject()
+    subject = ""
+    for i in all_subjects:
+        if list(i)[0] == subject_param:
+            subject = list(i)[0]
+
     return render_template('subjects/view_subject.html', subject=subject)
 
 
