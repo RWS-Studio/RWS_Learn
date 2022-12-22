@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+Version
+{% endblock %}
+
+{% block content %}
+<script>
+{% if is_update_available %}
+    window.location.href = "/?update-available=true";
+{% else %}
+    window.location.href = "/?update-available=false";
+{% endif %}
+</script>
+{% endblock %}

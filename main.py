@@ -1,6 +1,6 @@
 from database.grades_manager import GradesManager
 from database.subjects_manager import SubjectsManager
-from models import Grade, Subject
+from models import Grade, Subject, SoftwareVersion
 
 from flask import Flask, render_template, url_for, request, redirect
 
@@ -11,6 +11,13 @@ app = Flask(__name__)
 def index():
     # shows list of all grades + links to view them
     # in next version : graphs
+
+    # version control
+    try:
+        is_update_available = request.args["update-available"]
+    except Exception:
+        is_update_available = ""
+
     all_subjects = SubjectsManager().view_subject()
     subjects_and_grades = {}
     for i in all_subjects:
@@ -27,7 +34,14 @@ def index():
             except IndexError:
                 loop = False
             counter += 1
-    return render_template('index.html', subjects=subjects_and_grades)
+    return render_template('index.html', subjects=subjects_and_grades, is_update_available=is_update_available)
+
+
+@app.route('/version')
+def version():
+    version = SoftwareVersion()
+    is_new_version_available = version.get_if_new_version()
+    return render_template('version.html', is_update_available=is_new_version_available)
 
 
 @app.route('/subject/new')

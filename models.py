@@ -16,17 +16,11 @@ class Subject:
 
 
 class SoftwareVersion:
-    def __init__(self, number):
+    def __init__(self):
         """
-        for more information about number, https://semver.org/
-        :param number:
+        for more information about number of the version, https://semver.org/
         """
-        self.number = number
         self.last_version_url = urlopen("https://rws-studio.github.io/api/rws_learn/last_version.txt")
-
-    def show_update_available(self, update_number):
-        # include static/js/msg/update_available.js in the html
-        pass
 
     def get_if_new_version(self):
         with open("database/actual_version.txt", "r") as file:
@@ -34,11 +28,8 @@ class SoftwareVersion:
         last = self.last_version_url.read()  # response -> b'0.1-beta\n' / <class 'bytes'>
         last = str(last).split("'")[1].split("\\n")[0]  # convert last in str, split ' , split \\n the 1 item of this
                                                         # list and take the first item of this rest
-        print(actual)
-        print(last)
         if actual != last:
-            self.show_update_available(last)
-            print("update available")
+            return True
         else:
-            print("Software up-to-date")
+            return False
 

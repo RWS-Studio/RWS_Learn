@@ -5,7 +5,7 @@ Home
 
 {% block content %}
 {% for subject in subjects %}
-    {{ subject }}
+    <a href="/subject/view?subject={{ subject }}">{{ subject }}</a>
     {% for grade in subjects[subject] %}
         <div class="grade">
             <a href="/grade/view?id={{ grade.id }}&subject={{ subject }}">
@@ -18,4 +18,22 @@ Home
         </div>
     {% endfor %}
 {% endfor %}
+<!--version control-->
+<script>
+    let params = new URLSearchParams(window.location.search);
+
+    let is_update_available = params.get('update-available');
+
+    if(is_update_available == "true"){
+        showUpdateAvailable();
+        let wants_download = confirm("Do you want to download the new version ?");
+        if(wants_download){
+            window.location.href = "https://github.com/RWS-Studio/RWS_Learn";
+        }
+    }
+    else if(is_update_available == "false"){
+        showSoftwareUpToDate();
+    }
+</script>
+
 {% endblock %}
