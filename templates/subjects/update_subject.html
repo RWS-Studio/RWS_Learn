@@ -11,16 +11,10 @@ Update subject
         <input type="hidden" name="form" value="true" required>
         <input type="hidden" name="subject" id="js-input-subject" required>
         <input type="text" name="new-name" id="subject-name" placeholder="New name" required value="{{ subject }}">
-        <button type="submit">Create</button>
+        <button type="submit">Update</button>
     </form>
 </div>
     <script>
-        let subject_input = document.querySelector("#js-input-subject");
-
-        let params = new URLSearchParams(window.location.search);
-
-        let subject = params.get('subject');
-
-        subject_input.setAttribute("value", subject);
+        fillInHiddenFields("subject");
     </script>
 {% endblock %}

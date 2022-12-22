@@ -16,12 +16,6 @@ Delete subject
     </form>
 </div>
     <script>
-        let subject_input = document.querySelector("#js-input-subject");
-
-        let params = new URLSearchParams(window.location.search);
-
-        let subject = params.get('subject');
-
-        subject_input.setAttribute("value", subject);
+        fillInHiddenFields("subject");
     </script>
 {% endblock %}

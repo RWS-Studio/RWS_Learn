@@ -18,16 +18,6 @@ Delete grade
 </div>
 
     <script>
-        let id_input = document.querySelector("#js-input-id");
-        let subject_input = document.querySelector("#js-input-subject");
-
-        let params = new URLSearchParams(window.location.search);
-
-        let grade_id = params.get('id');
-        let subject = params.get('subject');
-
-        id_input.setAttribute("value", grade_id);
-        subject_input.setAttribute("value", subject);
-
+        fillInHiddenFields("grade");
     </script>
 {% endblock %}
