@@ -4,6 +4,7 @@ Update subject
 {% endblock %}
 
 {% block content %}
+<div id="form">
     <h1>Update subject</h1>
 
     <form action="" method="get">
@@ -12,7 +13,7 @@ Update subject
         <input type="text" name="new-name" id="subject-name" placeholder="New name" required value="{{ subject }}">
         <button type="submit">Create</button>
     </form>
-
+</div>
     <script>
         let subject_input = document.querySelector("#js-input-subject");
 

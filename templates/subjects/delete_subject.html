@@ -4,14 +4,17 @@ Delete subject
 {% endblock %}
 
 {% block content %}
-    <form action="" method="get">
+<div id="form">
+    <form action="" method="get" id="form-delete">
         <input type="hidden" name="form" value="true">
         <input type="hidden" name="subject" id="js-input-subject" required>
-        <input type="checkbox" name="confirm" id="confirm" required>
-        <label for="confirm">Are you sure to delete this subject ? There is no turning back.</label>
+        <div style="display:flex;align-items:center;gap:10px;">
+            <input type="checkbox" name="confirm" id="confirm" required style="width:auto;">
+            <label for="confirm">Are you sure to delete this subject ? There is no turning back.</label>
+        </div>
         <button type="submit">Delete</button>
     </form>
-
+</div>
     <script>
         let subject_input = document.querySelector("#js-input-subject");
 

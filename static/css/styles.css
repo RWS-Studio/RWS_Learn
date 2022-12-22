@@ -5,7 +5,7 @@
 
 @font-face {
     font-family: 'JetBrains Mono';
-    src: url('/media/fonts/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf');
+    src: url("/static/fonts/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf");
 }
 
 *{
@@ -18,4 +18,155 @@
 body{
     background: #1f1f1f;
     color: #fff;
+    overflow:hidden;
+}
+
+.dropdown{
+    display:none;
+}
+
+.dropdown-active{
+    display:flex;
+}
+
+#content{
+    overflow-y: scroll;
+    height:90vh;
+}
+
+/* nav */
+
+nav{
+    border-bottom: solid 1px #fff;
+    background:#1f1f1f;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+}
+
+nav li{
+    padding:20px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#fff;
+}
+
+#nav-dropdown-parent{
+    position:relative;
+}
+
+#nav-dropdown{
+    position:absolute;
+    background:#1f1f1f;
+    flex-direction:column;
+    margin-top:10px;
+    border-radius:10px;
+    border: solid 1px #fff;
+}
+
+#nav-dropdown li {
+    padding:10px;
+}
+
+/* forms */
+
+#form{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    gap:30px;
+    margin-top:30px;
+}
+
+#form form{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    width:50%;
+}
+
+#form form input, #form form selector{
+    width:75%;
+    height:30px;
+}
+
+#form form button{
+    width:50%;
+    height:30px;
+}
+
+#form-delete div{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+#form-delete input{
+    width:auto;
+}
+
+/* index */
+#index{
+    width:25%;
+}
+
+#index .subject{
+    text-decoration:none;
+    color:#fff;
+    margin:20px !important;
+
+
+    text-align:center;
+    width:100% !important;
+    margin-bottom:20px;
+}
+
+#index .grade{
+    margin:20px;
+    border: solid 1px #fff;
+    padding:10px;
+}
+
+/* view */
+
+#view{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    gap:30px;
+    margin-top:30px;
+}
+
+#view button{
+    width:25%;
+    height:30px;
+}
+
+
+#view #info{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+#view #info div{
+    display:flex;
+}
+
+#view #info .info-subject{
+    text-decoration:none;
+    color:#fff;
+    text-align:center;
+    width:100% !important;
+    margin-bottom:20px;
 }

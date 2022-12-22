@@ -16,12 +16,20 @@
             <li><a href="/grade/new">New grade</a></li>
             <li><a href="/subject/new">New subject</a></li>
             <li><a href="/version">Version</a></li>
-            <li><a href="https://github.com/RWS-Studio/RWS_Learn/issues">Help</a></li>
-            <li><a href="https://github.com/RWS-Studio">About</a></li>
-            <li><a href="https://github.com/RWS-Studio/RWS_Learn">GitHub repository</a></li>
+            <li id="nav-dropdown-parent">
+                <a href="javascript:showDropdown('#nav-dropdown');">Other</a>
+                <ul id="nav-dropdown" class="dropdown">
+                    <li><a href="https://github.com/RWS-Studio/RWS_Learn/issues">Help</a></li>
+                    <li><a href="https://github.com/RWS-Studio">About</a></li>
+                    <li><a href="https://github.com/RWS-Studio/RWS_Learn">GitHub repository</a></li>
+                </ul>
+            </li>
         </ul>
     </nav>
-    {% block content %}{% endblock %}
+
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>

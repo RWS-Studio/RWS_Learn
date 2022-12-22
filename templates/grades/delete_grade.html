@@ -4,14 +4,18 @@ Delete grade
 {% endblock %}
 
 {% block content %}
+<div id="form">
     <form action="" method="get">
         <input type="hidden" name="form" value="true">
         <input type="hidden" name="id" id="js-input-id" required>
         <input type="hidden" name="subject" id="js-input-subject" required>
-        <input type="checkbox" name="confirm" id="confirm" required>
-        <label for="confirm">Are you sure to delete this grade ? There is no turning back.</label>
+        <div style="display:flex;align-items:center;gap:10px;">
+            <input type="checkbox" name="confirm" id="confirm" required style="width:auto;">
+            <label for="confirm">Are you sure to delete this grade ? There is no turning back.</label>
+        </div>
         <button type="submit">Delete</button>
     </form>
+</div>
 
     <script>
         let id_input = document.querySelector("#js-input-id");

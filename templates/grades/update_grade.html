@@ -4,6 +4,7 @@ Update grade
 {% endblock %}
 
 {% block content %}
+<div id="form">
     <h1>Update grade</h1>
 
     <form action="" method="get">
@@ -17,7 +18,7 @@ Update grade
         <input type="text" name="new-description" id="grade-description" placeholder="New Description" required value="{{ grade['description'] }}">
         <button type="submit">Create</button>
     </form>
-
+</div>
     <script>
         let id_input = document.querySelector("#js-input-id");
         let subject_input = document.querySelector("#js-input-subject");

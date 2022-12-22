@@ -4,6 +4,7 @@ New grade
 {% endblock %}
 
 {% block content %}
+<div id="form">
     <h1>New grade</h1>
 
     <form action="" method="get">
@@ -12,7 +13,7 @@ New grade
         <input type="text" name="value-max" id="grade-value-max" placeholder="On" value="20" required>
         <input type="text" name="factor" id="grade-factor" placeholder="Factor">
         <!--<input type="text" name="subject" id="grade-subject" placeholder="Subject" required>-->
-        <select name="subject" id="grade-subject">
+        <select name="subject" id="grade-subject" style="height:30px;width:75%;">
             {% for subject in subjects %}
             <option value="{{ subject }}">{{ subject }}</option>
             {% endfor %}
@@ -20,4 +21,5 @@ New grade
         <input type="text" name="description" id="grade-description" placeholder="Description" required>
         <button type="submit">Create</button>
     </form>
+</div>
 {% endblock %}
