@@ -135,6 +135,11 @@ nav a{
     padding:10px;
 }
 
+#index .grade a{
+    text-decoration:none;
+    color:#fff;
+}
+
 /* view */
 
 #view{

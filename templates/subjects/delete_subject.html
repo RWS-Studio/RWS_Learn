@@ -4,17 +4,17 @@ Delete subject
 {% endblock %}
 
 {% block content %}
-<div id="form">
-    <form action="" method="get" id="form-delete">
-        <input type="hidden" name="form" value="true">
-        <input type="hidden" name="subject" id="js-input-subject" required>
-        <div style="display:flex;align-items:center;gap:10px;">
-            <input type="checkbox" name="confirm" id="confirm" required style="width:auto;">
-            <label for="confirm">Are you sure to delete this subject ? There is no turning back.</label>
-        </div>
-        <button type="submit">Delete</button>
-    </form>
-</div>
+    <div id="form">
+        <form action="" method="get" id="form-delete">
+            <input type="hidden" name="form" value="true">
+            <input type="hidden" name="subject" id="js-input-subject" required>
+            <div style="display:flex;align-items:center;gap:10px;">
+                <input type="checkbox" name="confirm" id="confirm" required style="width:auto;">
+                <label for="confirm">Are you sure to delete this subject ? There is no turning back. All grades of this subject will be deleted too.</label>
+            </div>
+            <button type="submit">Delete</button>
+        </form>
+    </div>
     <script>
         fillInHiddenFields("subject");
     </script>

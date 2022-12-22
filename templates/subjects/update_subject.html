@@ -4,16 +4,16 @@ Update subject
 {% endblock %}
 
 {% block content %}
-<div id="form">
-    <h1>Update subject</h1>
+    <div id="form">
+        <h1>Update subject</h1>
 
-    <form action="" method="get">
-        <input type="hidden" name="form" value="true" required>
-        <input type="hidden" name="subject" id="js-input-subject" required>
-        <input type="text" name="new-name" id="subject-name" placeholder="New name" required value="{{ subject }}">
-        <button type="submit">Update</button>
-    </form>
-</div>
+        <form action="" method="get">
+            <input type="hidden" name="form" value="true" required>
+            <input type="hidden" name="subject" id="js-input-subject" required>
+            <input type="text" name="new-name" id="subject-name" placeholder="New name" required value="{{ subject }}">
+            <button type="submit">Update</button>
+        </form>
+    </div>
     <script>
         fillInHiddenFields("subject");
     </script>

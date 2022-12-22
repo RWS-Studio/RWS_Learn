@@ -4,25 +4,24 @@ Home
 {% endblock %}
 
 {% block content %}
-<div id="index">
-    {% for subject in subjects %}
-    <a class="subject" href="/subject/view?subject={{ subject }}">{{ subject }}</a>
-    {% for grade in subjects[subject] %}
-        <div class="grade">
-            <a href="/grade/view?id={{ grade.id }}&subject={{ subject }}">
-                {{ grade.grade }}
-                {{ grade.grade_max }}
-                {{ grade_20 }}
-                {{ grade.factor }}
-                {{ grade.description }}
-            </a>
-        </div>
+    <div id="index">
+        {% for subject in subjects %}
+        <a class="subject" href="/subject/view?subject={{ subject }}">{{ subject }}</a>
+        {% for grade in subjects[subject] %}
+            <div class="grade">
+                <a href="/grade/view?id={{ grade.id }}&subject={{ subject }}">
+                    <p>{{ grade.grade }} / {{ grade.grade_max }}</p>
+                    <p>{{ grade.grade_20 }} / 20</p>
+                    <p>Factor : {{ grade.factor }}</p>
+                    <p>Description : {{ grade.description }}</p>
+                </a>
+            </div>
+        {% endfor %}
     {% endfor %}
-{% endfor %}
-</div>
-<!--version control-->
-<script>
-    checkSoftwareVersion();
-</script>
+    </div>
 
+    <script>
+        //version control
+        checkSoftwareVersion();
+    </script>
 {% endblock %}

@@ -4,21 +4,22 @@ Update grade
 {% endblock %}
 
 {% block content %}
-<div id="form">
-    <h1>Update grade</h1>
+    <div id="form">
+        <h1>Update grade</h1>
 
-    <form action="" method="get">
-        <input type="hidden" name="form" value="true" required>
-        <input type="hidden" name="id" id="js-input-id" required>
-        <input type="hidden" name="subject" id="js-input-subject" required>
-        <input type="text" name="new-value" id="grade-value" placeholder="New Grade" required value="{{ grade['grade'] }}">
-        <input type="text" name="new-value-max" id="grade-value-max" placeholder="New On" value="{{ grade['grade_max'] }}" required>
-        <input type="text" name="new-factor" id="grade-factor" placeholder="New Factor" value="{{ grade['factor'] }}">
-        <input type="text" name="new-subject" id="grade-subject" placeholder="New Subject" required value="{{ subject }}">
-        <input type="text" name="new-description" id="grade-description" placeholder="New Description" required value="{{ grade['description'] }}">
-        <button type="submit">Update</button>
-    </form>
-</div>
+        <form action="" method="get">
+            <input type="hidden" name="form" value="true" required>
+            <input type="hidden" name="id" id="js-input-id" required>
+            <input type="hidden" name="subject" id="js-input-subject" required>
+            <input type="text" name="new-value" id="grade-value" placeholder="New Grade" required value="{{ grade['grade'] }}">
+            <input type="text" name="new-value-max" id="grade-value-max" placeholder="New On" value="{{ grade['grade_max'] }}" required>
+            <input type="text" name="new-factor" id="grade-factor" placeholder="New Factor" value="{{ grade['factor'] }}">
+            <input type="text" name="new-subject" id="grade-subject" placeholder="New Subject" required value="{{ subject }}">
+            <input type="text" name="new-description" id="grade-description" placeholder="New Description" required value="{{ grade['description'] }}">
+            <button type="submit">Update</button>
+        </form>
+    </div>
+
     <script>
         fillInHiddenFields("grade");
     </script>
