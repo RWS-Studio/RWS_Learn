@@ -13,7 +13,7 @@ Home
                 <a href="/grade/view?id={{ grade.id }}&subject={{ subject }}">
                     <p>{{ grade.grade }} / {{ grade.grade_max }}</p>
 
-                    <p><span data-subject="{{ subject }}" data-grade="{{ grade.grade_20 }}" class="js-grade">{{ grade.grade_20 }}</span> / 20</p>
+                    <p><span data-subject="{{ subject }}" data-grade="{{ grade.grade_20 }}" data-factor="{{ grade.factor }}" class="js-grade">{{ grade.grade_20 }}</span> / 20</p>
 
                     <p>Factor : {{ grade.factor }}</p>
                     <p>Description : {{ grade.description }}</p>
@@ -25,11 +25,12 @@ Home
         <div class="index-container datas-container">
             <p>Global Mean : <span id="js-global-mean"></span></p>
             <p>Excepted Mean : <span id="js-excepted-mean"></span></p>
-            <div class="reach-excepted-mean" title="Not available yet.">
+            <div class="reach-excepted-mean">
                 <p>How to reach the excepted mean ?</p>
                 <ul>
                     <li>Grade value : <span id="js-reach-grade-value"></span></li>
                     <li>How often : <span id="js-reach-how-often"></span></li>
+                    <li>Mean after : <span id="js-reach-mean-after"></span></li>
                 </ul>
             </div>
         </div>
@@ -47,6 +48,7 @@ Home
             span_excepted_mean = document.querySelector("#js-excepted-mean"),
             span_reach_grade_value = document.querySelector("#js-reach-grade-value"),
             span_reach_how_often = document.querySelector("#js-reach-how-often"),
+            span_reach_mean_after = document.querySelector("#js-reach-mean-after"),
             excepted_mean = getCookie("excepted_mean"),
             all_grades = document.querySelectorAll("span.js-grade"),
             all_span_subjects_means = document.querySelectorAll("span.js-subject-mean")
@@ -58,6 +60,8 @@ Home
             setCookie("excepted_mean", excepted_mean, 30*10);  // one scolar year
         }
 
+        span_excepted_mean.innerText = excepted_mean;
+
         all_span_subjects_means.forEach(subject => {
             all_subjects_means[subject.getAttribute("data-subject")] = [];
         });
@@ -65,7 +69,8 @@ Home
         all_grades.forEach(grade => {
             grade_subject = grade.getAttribute("data-subject");
             grade_value = grade.getAttribute("data-grade");
-            all_subjects_means[grade_subject].push(grade_value);
+            grade_factor = grade.getAttribute("data-factor");
+            all_subjects_means[grade_subject].push(grade_value * grade_factor);
         });
 
         for (let [key, value] of Object.entries(all_subjects_means)) {
@@ -90,6 +95,36 @@ Home
         let global_mean = global_total / all_span_subjects_means.length;
 
         span_global_mean.innerText = global_mean.toFixed(2);
-        span_excepted_mean.innerText = excepted_mean;
+        span_global_mean.setAttribute("data-global-total", global_total);
+        span_global_mean.setAttribute("data-length", all_span_subjects_means.length);
+
+        // reach excepted mean
+
+        if(excepted_mean <= global_mean){
+            document.querySelector(".reach-excepted-mean ul").style.display = "none";
+
+            congrats_msg = document.createElement("p");
+            congrats_msg.innerText = "Congratulations, you have a mean that satisfy your mean project.";
+            document.querySelector(".reach-excepted-mean").append(congrats_msg);
+        }else{
+            total = span_global_mean.getAttribute("data-global-total");
+            len = span_global_mean.getAttribute("data-length");
+
+            _mean = global_mean;
+            _total = parseFloat(total);
+
+            counter = 1;
+            while(excepted_mean >= _mean){
+                _total += 20;
+                _mean = _total / (parseInt(len)+counter)
+
+                console.log(_mean, _total)
+                counter++;
+            }
+
+            span_reach_grade_value.innerText = 20;
+            span_reach_how_often.innerText = counter;
+            span_reach_mean_after.innerText = _mean.toFixed(2);
+        }
     </script>
 {% endblock %}
