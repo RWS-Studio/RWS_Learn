@@ -5,9 +5,9 @@ function showErrorMsg(error_msg){
 }
 
 function showSoftwareUpToDate(){
-    alert("The software is up-to-date.");  // to do : make an sort of notification that says the same msg.
+    alert("The software is up-to-date.");
 }
 
 function showUpdateAvailable(){
-    alert("A new version of the software is available.");  // to do : make an sort of notification that says the same msg.
+    alert("A new version of the software is available.");
 }

@@ -115,15 +115,19 @@ nav a{
 
 /* index */
 #index{
-    width:25%;
+    display:flex;
+    width:100%;
+}
+
+.index-container{
+    width:33.3%;
+    padding:10px;
 }
 
 #index .subject{
     text-decoration:none;
     color:#fff;
     margin:20px !important;
-
-
     text-align:center;
     width:100% !important;
     margin-bottom:20px;
@@ -138,6 +142,18 @@ nav a{
 #index .grade a{
     text-decoration:none;
     color:#fff;
+}
+
+.datas-container p, .datas-container ul{
+    padding-bottom:10px;
+}
+
+.reach-excepted-mean{
+    margin-top:20px;
+}
+
+.datas-container ul{
+    margin-left:20px;
 }
 
 /* view */
